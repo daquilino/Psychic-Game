@@ -14,11 +14,21 @@ var psychicGuess = "";
 	
 	document.onkeyup = function(element){
 
+		
 		playerGuess = event.key.toLowerCase();
 		
+		if (letters.indexOf(playerGuess) < 0){
+			alert("Woops! Please Guess a Letter!");
+			return;			
+		}
+		
+		console.log(playerGuess); //test code
+		
 		psychicGuess = (randomLetter(letters));
-		compare(playerGuess, psychicGuess, wins, losses, guessesMade, guessesLeft)
-		showResults()
+		
+		compare(playerGuess, psychicGuess, wins, losses, guessesMade, guessesLeft);
+		
+		showResults(wins, losses, guessesLeft, guessesMade);
 	
 	}//END document.onkeyup = function(element)
 
@@ -30,31 +40,37 @@ var psychicGuess = "";
 	}// END randomLetter()
 
 
-	
 	// Logic for comparing guesses and ...
 	function compare(){
 
-		if(playerGuess === psychicGuess){
-			wins++;
-			guessesLeft = 10;
-			guessesMade = [];
+		if (guessesLeft > 1){	
+
+			if(playerGuess === psychicGuess){
+				alert("You Win!!!");
+				wins++;
+				guessesLeft = 10;
+				guessesMade = [];
+			}
+			else {
+				guessesLeft--;
+				guessesMade.push(playerGuess);
+			}
 		}
 		else{
+			alert("No More Guesses. You Lose! Try Again.");
 			losses++;
-			guessesLeft--;
-			guessesMade.push(playerGuess);
-
-		}
-
+			guessesLeft = 10;
+			guessesMade = [];
+			return;
+		}	
 
 	}// END compare()
 
-	// Displays to screen reults of game.
+	// Displays to screen results of game.
 	function showResults() {
 
-		var results = "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses: " + guesses + "</p>" + "<p>Your guesses so far: " + guessesMade + "</p>";
+		var results = "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guessesLeft + "</p>" + "<p>Your Guesses So Far: " + guessesMade + "</p>";
 
 		document.querySelector("#results").innerHTML= results;
-
 
 	}// END showResults()

@@ -7,3 +7,12 @@ header {
 	text-align: center;
 
 }
+
+#results p {
+	font-size:24px;
+
+}
+
+div#results p:first-child {color:blue;}
+
+div#results p:nth-child(2) {color:red;}
