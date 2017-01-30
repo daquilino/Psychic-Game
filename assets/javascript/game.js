@@ -22,9 +22,11 @@ var psychicGuess = "";
 			return;			
 		}
 		
-		console.log(playerGuess); //test code
+console.log("pre: " + psychicGuess); //test code
 		
 		psychicGuess = (randomLetter(letters));
+		
+console.log("post: " + psychicGuess); //test code
 		
 		compare(playerGuess, psychicGuess, wins, losses, guessesMade, guessesLeft);
 		
@@ -36,7 +38,13 @@ var psychicGuess = "";
 	//When passed and array; randomly chooses then returns
 	// element
 	function randomLetter(){
-		return  letters[Math.floor(Math.random()*letters.length)]
+		
+		if (guessesLeft === 10){
+			return  letters[Math.floor(Math.random()*letters.length)];
+		}
+		else{
+			return psychicGuess;
+		}
 	}// END randomLetter()
 
 
