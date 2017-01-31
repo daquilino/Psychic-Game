@@ -1,1 +1,0 @@
-fix so that new letter is only choosen once per guessen not every time.

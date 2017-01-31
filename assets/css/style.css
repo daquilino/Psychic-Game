@@ -3,9 +3,12 @@
 /*                style.js                      */
 
 header {
-	background: #BADA55;
+	background: #BADA55; /*haha! couldn't resist.*/
 	text-align: center;
+}
 
+header h1 {
+	margin: 0;
 }
 
 #results p {
