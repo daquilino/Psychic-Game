@@ -2,6 +2,9 @@
 <!-- RCB - "Psychic-Game" Homework #3         -->
 <!--             index.html                   -->
 
+<!-- A guessing game where app randomly picks a letter, -->
+<!-- and the user has to guess which letter the app chose. -->
+
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -14,32 +17,36 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+	<link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
 </head>
 
 <body>
-
-	
-	<header>
-		<h1>Psychic Game</h1>
-	</header>
-
-
-	<div>
-		<h2>Guess What Letter I'm thinking of?</h2>
-		<h4>Play By Pressing Any Letter Key.</h4>
-	</div>
-
-
-	<div id="results">
+	<div class="container-fluid">	
+		<div  id=main>
+			<div id="display">
+				
+				<h2>Psychic Game</h2>
 		
-		<p>Wins: 0</p>
-		<p>Losses: 0</p>
-		<p>Guesses Left: 10</p>
-		<p>Your Guesses So Far: </p>
+				<h3>Guess What Letter I'm thinking of?</h3>
+				<h4>Play By Pressing Any Letter Key.</h4>
+				<br>
+		
+				<section id="results">		
+					<p>Wins: <span id="wins">0</span></p>
+					<p>Losses: <span id="losses">0</span></p>
+					<p>Guesses Left: <span id="left">10</span></p>
+					<p>Your Guesses So Far</p>
+					<p id="guesses"></p>
+				</section>
+			</div><!-- END display -->
+			
+			<h1 id="winAlert">YOU WIN!!!</h1>
+			
+			<h1 id="loseAlert">YOU LOSE!!!</h1>
+		</div><!-- END #main -->
+	</div><!-- END .container-fluid -->
 	
-	</div>
-
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </body>

@@ -2,6 +2,7 @@
 /*  RCB - "Psychic-Game" Homework #3           */
 /*                game.js                      */
 
+
 	// Global Variable Declarations
 	var wins = 0;
 	var losses = 0;
@@ -11,6 +12,7 @@
 	var playerGuess = "";
 	var psychicGuess = "";
 
+	
 	//==============================================================
 	
 	// Event Handler. Monitors for 'key up'.
@@ -18,7 +20,7 @@
 	// Error checks key is a letter.
 	// Assigns psychicGuess random letter via randomLetter()
 	// Calls compare() for game logic.
-	// Calls showResults to display game results to player.
+	// Calls showResults() to display game results to player.
 	document.onkeyup = function(element){
 		
 		playerGuess = event.key.toUpperCase();
@@ -26,6 +28,12 @@
 		// checks if key pressed is a letter.
 		if (letters.indexOf(playerGuess) < 0){
 			alert("Woops! Please Guess a Letter!");
+			return 0;			
+		}
+
+		// checks if letter already guessed.
+		if (guessesMade.indexOf(playerGuess) > -1){
+			alert("You Already Guessed '" + playerGuess + "'");
 			return 0;			
 		}
 		
@@ -71,7 +79,7 @@
 			
 			if(guessesLeft === 0){
 
-				alert("You Lose! My Letter Was: " + "'"+  psychicGuess + "'" + " Try Again.");			
+				loseAlert();			
 				losses++;
 				resetGame();
 			}
@@ -87,26 +95,35 @@
 	// Displays results of game to page.
 	function showResults() {
 
-		var results = "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guessesLeft + "</p>" + "<p>Your Guesses So Far: " + guessesMade + "</p>";
+		//var results = "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guessesLeft + "</p>" + "<p>Your Guesses So Far: " + guessesMade + "</p>";
 
-		document.querySelector("#results").innerHTML= results;
+		document.querySelector("#wins").innerHTML= wins;
+		document.querySelector("#losses").innerHTML= losses;
+		document.querySelector("#left").innerHTML= " " + guessesLeft;
+		document.querySelector("#guesses").innerHTML= guessesMade;
+		
 
 	}// END showResults()
 	
 	//==============================================================
 	
-	//Displays a random win alert message.
+	//Makes "YOU WIN!!!" element visible for 3 seconds
 	function winAlert(){
-		
-		var message = ["Now order me a pizza.  WITH YOUR MIND!!!",
-			"Can you pick me up a Powerball ticket?",
-			"You, Me, Vegas!!!"	]; 
-		
-		var randMessage = message[Math.floor(Math.random()*message.length)];
-
-		alert("Your Psychic! " +  randMessage);
+		var x = document.getElementById("winAlert");
+		x.style.visibility = "visible";
+		setTimeout(function(){x.style.visibility = "hidden";},2000);	
 	
 	}//END winAlert()
+
+	//==============================================================
+	
+	//Makes "YOU LOSE!!!" element visible for 3 seconds
+	function loseAlert(){
+		var x = document.getElementById("loseAlert");
+		x.style.visibility = "visible";
+		setTimeout(function(){x.style.visibility = "hidden";},2000);	
+	
+	}//END loseAlert()
 
 	//==============================================================
 
