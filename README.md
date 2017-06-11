@@ -1,5 +1,5 @@
 # Psychic-Game
-Homework #3 Feb 04, 2017 - Psychic Game - Create a game using HTML and Javascript with the following criteria.
+Psychic Game - Create a game using HTML and Javascript with the following criteria.
 
 The app randomly picks a letter, and the user has to guess which letter the app chose. Put the following text on your page:
 
